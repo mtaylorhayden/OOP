@@ -114,6 +114,43 @@ namespace ZooConsole
                         }
                         break;
 
+                    case "sort":
+                        try
+                        {
+                            // The zoo sorts the animals using their type and their value.
+                            SortResult results = zoo.SortAnimals(commandWords[1], commandWords[2]);
+
+                            // Presents the sort type and capitalized the first letter of the second word in the array.
+                            Console.WriteLine("SORT TYPE: " + commandWords[1].ToUpper());
+
+                            // Presents the Sort by and capitalizes the first letter of the third word in the array.
+                            Console.WriteLine("SORT BY: " + commandWords[2].ToUpper());
+
+                            // Displays how many times the list needed to be swapped around.
+                            Console.WriteLine("SWAP COUNT: " + results.SwapCount);
+
+                            // For each animal in the SortResults list of animals...
+                            foreach(Animal a in results.Animals)
+                            {
+                                // Display each animal in the list.
+                                Console.WriteLine(a.ToString());
+                            }
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            Console.WriteLine("Sort command must be entered as: sort [sort type] [sort by -- weight or name].");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Sort command must be entered as: sort [sort type] [sort by -- weight or name].");
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            Console.WriteLine("Sort command must be entered as: sort [sort type] [sort by -- weight or name].");
+                        }
+
+                        break;
+
                     case "add":
 
                         try
