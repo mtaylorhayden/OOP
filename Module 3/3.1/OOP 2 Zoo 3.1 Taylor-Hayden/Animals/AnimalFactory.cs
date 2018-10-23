@@ -68,8 +68,6 @@ namespace Animals
 
                 default:
                     break;
-
-                    
             }
 
             return result;
