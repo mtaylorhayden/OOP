@@ -247,13 +247,14 @@ namespace Zoos
                 case "bubble":
                     if(sortValue == "weight")
                     {
-                        SortHelper.BubbleSortByWeight(this.animals);
+                        // Sort the animals by weight.
+                       result = SortHelper.BubbleSortByWeight(this.animals);
                     }
 
                     break;
             }
 
-            return null;
+            return result;
         }
 
         /// <summary>

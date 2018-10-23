@@ -8,6 +8,8 @@ namespace Zoos
     /// </summary>
     public static class SortHelper
     {
+
+
         /// <summary>
         /// Does a bubble sort by weight.
         /// </summary>
@@ -15,7 +17,30 @@ namespace Zoos
         /// <returns> The results of the bubble sort.</returns>
         public static SortResult BubbleSortByWeight(List<Animal> animals)
         {
-            return null;
+            // Create a swap counter.
+            int swapCounter = 0;
+
+            // Use a for loop to loop backward through the list.
+            // Initialize the loop variable to one less than the length of the list and decrement the variable instead of increment.
+            for(int i = animals.Count - 1; i > 0; i--)
+            {
+                // Loop forward as long as the loop variable is less than the outer loop variable.
+                for(int j = 0; j < i; j++)
+                {
+                    // If the weight of the current animal is more than the weight of the next animal, swap the two animals and increment the swap count.
+                    if(animals[j].Weight > animals[j + 1].Weight)
+                    {
+                        // Swap the animals place in the index.
+                        SortHelper.Swap(animals,j, j + 1);
+
+                        // Increment the count.
+                        swapCounter++;
+                    }
+                }
+            }
+
+            // Using an Object initializer, set the objects values, and return them.
+            return new SortResult() { SwapCount = swapCounter, Animals = animals };
         }
 
         /// <summary>
@@ -27,13 +52,13 @@ namespace Zoos
         private static void Swap(List<Animal> animals, int index1, int index2)
         {
             // Set tmp to 1
-            Animal tmp = animals[0];
+            Animal tmp = animals[index1];
 
             // Set the 2 to 1.
-            animals[0] = animals[1];
+            animals[index1] = animals[index2];
 
             // Set the 1 to 2.
-            animals[1] = tmp;
+            animals[index2] = tmp;
         }
     }
 }
