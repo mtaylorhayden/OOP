@@ -250,7 +250,12 @@ namespace Zoos
                         // Sort the animals by weight.
                        result = SortHelper.BubbleSortByWeight(this.animals);
                     }
-
+                    if(sortValue == "name")
+                    {
+                        // Sort the animals by weight. 
+                        result = SortHelper.BubbleSortByName(this.animals);
+                    }
+                
                     break;
             }
 

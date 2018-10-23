@@ -8,7 +8,33 @@ namespace Zoos
     /// </summary>
     public static class SortHelper
     {
+        /// <summary>
+        /// Sorts the animals names with the Bubble algorithm
+        /// </summary>
+        /// <param name="animals">The list of animals.</param>
+        /// <returns> The sorted result.</returns>
+        public static SortResult BubbleSortByName(List<Animal> animals)
+        {
+            int swapCounter = 0;
 
+            // Make a loop variable to one less than the length of the list and decrement the variable.
+            for(int i = animals.Count - 1; i > 0; i--)
+            {
+                for(int j = 0; j < i; j++)
+                {
+                    if(animals[j].Name.CompareTo(animals[j + 1].Name) > 0)
+                    {
+                        // Swap the animals place in the index.
+                        SortHelper.Swap(animals, j, j + 1);
+
+                        // Increment the count.
+                        swapCounter++;
+                    }
+                }
+            }
+            // Using an Object initializer, set the objects values, and return them.
+            return new SortResult() { SwapCount = swapCounter, Animals = animals };
+        }
 
         /// <summary>
         /// Does a bubble sort by weight.
