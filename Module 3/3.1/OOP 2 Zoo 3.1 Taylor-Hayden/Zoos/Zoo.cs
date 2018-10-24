@@ -255,7 +255,15 @@ namespace Zoos
                         // Sort the animals by weight. 
                         result = SortHelper.BubbleSortByName(this.animals);
                     }
-                
+                    break;
+                // If selection was typed then sort by selection.
+                case "selection":
+                    // If you want to sort by the weight value then type weight.
+                    if(sortValue == "weight")
+                    {
+                        // Sort the animals by weight using a Selection sort.
+                        result = SortHelper.SelectionSortByWeight(this.animals);
+                    }
                     break;
             }
 

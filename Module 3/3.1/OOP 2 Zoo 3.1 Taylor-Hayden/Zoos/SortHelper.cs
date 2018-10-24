@@ -1,5 +1,6 @@
 ﻿using Animals;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Zoos
 {
@@ -63,6 +64,52 @@ namespace Zoos
                         swapCounter++;
                     }
                 }
+            }
+
+            // Using an Object initializer, set the objects values, and return them.
+            return new SortResult() { SwapCount = swapCounter, Animals = animals };
+        }
+
+        /// <summary>
+        /// The class used to sort by selection.
+        /// </summary>
+        /// <param name="animals"> The list of animals being sorted</param>
+        /// <returns> The sorted result.</returns>
+        public static SortResult SelectionSortByWeight(List<Animal> animals)
+        {
+            SortResult result = null;
+
+            // Make a counter.
+            int swapCounter = 0;
+
+            // Loop forward through the list.
+            for (int i = 0; i < animals.Count - 1; i++)
+            {
+                // Create a variable and set it to the current animal.
+                // This variable should contain the animal with the current minimum weight.
+                Animal minimumAnimal = animals[i];
+
+                // Loop through the remaining animals in the list to find the animal with the lowest weight.
+                for (int j = i + 1; j < animals.Count; j++)
+                {
+                    // If the current animal's weight is less than the animal with the lowest weight..
+                    if(animals[j].Weight < minimumAnimal.Weight)
+                    {
+                        // Set the miniumWeight variable to the current animal.
+                        minimumAnimal = animals[j];
+                    }
+                }
+                // After finding the animal with the lowest weight.
+                // Compare the current animals weight with the minimum weight.
+                if (animals[i].Weight != minimumAnimal.Weight)
+                {
+                    // Swap the two animals.
+                    SortHelper.Swap(animals, i, animals.IndexOf(minimumAnimal));
+
+                    // Increment the swap count.
+                    swapCounter++;
+                }
+
             }
 
             // Using an Object initializer, set the objects values, and return them.
