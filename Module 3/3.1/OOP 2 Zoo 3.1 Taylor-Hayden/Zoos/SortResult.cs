@@ -18,6 +18,16 @@ namespace Zoos
         public List<Animal> Animals { get; set; }
 
         /// <summary>
+        /// Gets or sets the compare count.
+        /// </summary>
+        public int CompareCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the millisecond count.
+        /// </summary>
+        public double ElapsedMilliseconds { get; set; }
+
+        /// <summary>
         /// Gets or sets the swap count.
         /// </summary>
         public int SwapCount { get; set; }

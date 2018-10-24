@@ -129,6 +129,12 @@ namespace ZooConsole
                             // Displays how many times the list needed to be swapped around.
                             Console.WriteLine("SWAP COUNT: " + results.SwapCount);
 
+                            // Displays the amount the compare count.
+                            Console.WriteLine("COMPARE COUNT: " + results.CompareCount);
+
+                            // Displays the milliseconds elapsed.
+                            Console.WriteLine("TIME: " + results.ElapsedMilliseconds);
+
                             // For each animal in the SortResults list of animals...
                             foreach(Animal a in results.Animals)
                             {
