@@ -75,10 +75,49 @@ namespace Zoos
         /// </summary>
         /// <param name="animals"> The list of animals being sorted</param>
         /// <returns> The sorted result.</returns>
+        public static SortResult SelectionSortByName(List<Animal> animals)
+        {
+            // Make a counter.
+            int swapCounter = 0;
+
+            // Loop forward through the list.
+            for (int i = 0; i < animals.Count - 1; i++)
+            {
+                // Create a variable and set it to the current animal.
+                // This variable should contain the animal with the current minimum name.
+                Animal minimumAnimal = animals[i];
+
+                for (int j = i + 1; j < animals.Count; j++)
+                {
+                    // Compares the the animals name to the animal with the current minium name.
+                    if (animals[j].Name.CompareTo(minimumAnimal.Name) < 0)
+                    {
+                        // Set the miniumAnimal variable to the current animal.
+                        minimumAnimal = animals[j];
+                    }
+                }
+                // After finding the animal with the lowest name.
+                // Compare the current animals name with the minimum name.
+                if (animals[i].Name != minimumAnimal.Name)
+                {
+                    // Swap the two animals.
+                    SortHelper.Swap(animals, i, animals.IndexOf(minimumAnimal));
+
+                    // Increment the swap count.
+                    swapCounter++;
+                }
+            }
+            // Using an Object initializer, set the objects values, and return them.
+            return new SortResult() { SwapCount = swapCounter, Animals = animals };
+        }
+
+        /// <summary>
+        /// The class used to sort by selection.
+        /// </summary>
+        /// <param name="animals"> The list of animals being sorted</param>
+        /// <returns> The sorted result.</returns>
         public static SortResult SelectionSortByWeight(List<Animal> animals)
         {
-            SortResult result = null;
-
             // Make a counter.
             int swapCounter = 0;
 

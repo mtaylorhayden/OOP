@@ -245,12 +245,12 @@ namespace Zoos
             {
                 // If "bubble" was entered, call the SortHelper's bubblesort method and give it the list of aniamls.
                 case "bubble":
-                    if(sortValue == "weight")
+                    if (sortValue == "weight")
                     {
                         // Sort the animals by weight.
                        result = SortHelper.BubbleSortByWeight(this.animals);
                     }
-                    if(sortValue == "name")
+                    if (sortValue == "name")
                     {
                         // Sort the animals by weight. 
                         result = SortHelper.BubbleSortByName(this.animals);
@@ -259,10 +259,15 @@ namespace Zoos
                 // If selection was typed then sort by selection.
                 case "selection":
                     // If you want to sort by the weight value then type weight.
-                    if(sortValue == "weight")
+                    if (sortValue == "weight")
                     {
                         // Sort the animals by weight using a Selection sort.
                         result = SortHelper.SelectionSortByWeight(this.animals);
+                    }
+                    if (sortValue == "name")
+                    {
+                        // Sort the animals by their name.
+                        result = SortHelper.SelectionSortByName(this.animals);
                     }
                     break;
             }
