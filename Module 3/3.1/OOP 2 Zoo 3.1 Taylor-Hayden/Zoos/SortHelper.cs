@@ -217,6 +217,53 @@ namespace Zoos
         /// </summary>
         /// <param name="animals"> The list of animals being sorted</param>
         /// <returns> The sorted result.</returns>
+        public static SortResult InsertionSortByName(List<Animal> animals)
+        {
+            // Initialize a compare counter variable.
+            int compareCounter = 0;
+
+            // Initialize a swap counter variable
+            int swapCounter = 0;
+
+            // Create a new stop watch and start the timer.
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            // i will be the index identifier. As long as the index identifier is less than the amount of items in the list..
+            for (int i = 1; i < animals.Count; i++)
+            {
+
+                // j is an index identifer. Loops over the sorted part of the array.
+                // j is the smallest spot on the array.
+                for (int j = 0; j < i; j++)
+                {
+                    // Set at the point of comparison.
+                    compareCounter++;
+
+                    // is j greater than i? i is where we are looking, j is where we are in the list.
+                    if (animals[j].Name.CompareTo(animals[i].Name) > 0 && j >= 0)
+
+
+                        // Change the index position in the array.
+                        SortHelper.Swap(animals, i, j);
+
+                    // Incrememnt the counter.
+                    swapCounter++;
+
+                    compareCounter++;
+                }
+            }
+            // Stops the stop watch.
+            stopWatch.Stop();
+
+            return new SortResult() { SwapCount = swapCounter, Animals = animals, CompareCount = compareCounter, ElapsedMilliseconds = stopWatch.Elapsed.TotalMilliseconds };
+        }
+
+        /// <summary>
+        /// The class used to sort by insertion.
+        /// </summary>
+        /// <param name="animals"> The list of animals being sorted</param>
+        /// <returns> The sorted result.</returns>
         public static SortResult InsertionSortByWeight(List<Animal> animals)
         {
             // Initialize a compare counter variable.
