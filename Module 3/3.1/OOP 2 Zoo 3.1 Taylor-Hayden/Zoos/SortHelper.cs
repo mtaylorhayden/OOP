@@ -156,6 +156,38 @@ namespace Zoos
         }
 
         /// <summary>
+        /// The class used to sort by insertion.
+        /// </summary>
+        /// <param name="animals"> The list of animals being sorted</param>
+        /// <returns> The sorted result.</returns>
+        public static SortResult InsertionSortByWeight(List<Animal> animals)
+        {
+            // initialize a swap counter variable
+            int swapCounter = 0;
+
+            // i will be the index identifier. As long as the index identifier is less than the amount of items in the list..
+            for (int i = 1; i < animals.Count; i++)
+            {
+                
+                // j is an index identifer. Loops over the sorted part of the array.
+                // j is the smallest spot on the array.
+                for(int j = 0; j < i; j++)
+                {
+                    // is j greater than i? i is where we are looking, j is where we are in the list.
+                    if(j >= 0 && animals[j].Weight > animals[i].Weight)
+                    
+                        // Change the index position in the array.
+                        SortHelper.Swap(animals, i, j);
+
+                        // Incrememnt the counter.
+                        swapCounter++;
+                    
+                }
+            }
+            return new SortResult() { SwapCount = swapCounter, Animals = animals };
+        }
+
+        /// <summary>
         /// Swaps the animals in the list.
         /// </summary>
         /// <param name="animals"> The list of animals.</param>

@@ -270,6 +270,15 @@ namespace Zoos
                         result = SortHelper.SelectionSortByName(this.animals);
                     }
                     break;
+                // If you want to sory by inesertion...
+                case "insertion":
+                    // If you want to sort by the weight value then type weight.
+                    if (sortValue == "weight")
+                    {
+                        // Sort by the animals weight and insertion.
+                        result = SortHelper.InsertionSortByWeight(this.animals);
+                    }
+                    break;
             }
 
             return result;
