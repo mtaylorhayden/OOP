@@ -2,6 +2,8 @@
 using People;
 using System;
 using Zoos;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace ZooConsole
 {
@@ -88,6 +90,79 @@ namespace ZooConsole
                         catch (ArgumentOutOfRangeException ex)
                         {
                             Console.WriteLine(ex.Message);
+                        }
+
+                        break;
+
+                    // If you type search binary, or search linear...
+                    case "search":
+                        if(commandWords[1] == "binary")
+                        {
+                            // Set a counter variable.
+                            int counter = 0;
+
+                            // Get the passed in animals name.
+                            string animalName = commandWords[2];
+
+                            // The sorted list of animals. Sorts type is bubble, and sorts them by name.
+                            SortResult animals = zoo.SortAnimals("bubble", "name");
+
+                            // The smallest position availabe on the list.
+                            int minPosition = 0;
+
+                            // The largest position availabe on the list.
+                            int maxPosition = animals.Animals.Count - 1;
+
+                            while(minPosition <= maxPosition)
+                            {
+                                // Finds the middle of the list.
+                                int middle = (minPosition + maxPosition) / 2;
+
+                                // Increment loop counter.
+                                counter++;
+
+                                // Compare the the animal name to the animal at the middle positions name. If the result is greater than zero...
+                                if (commandWords[2].CompareTo(animals.Animals[middle].Name) > 0)
+                                {
+                                    // Then the animal is in the "upper" half of the list.
+                                    // Set the minPosition to one more than the middle Position.
+                                    minPosition = middle + 1;
+                                }
+                                // If the result is less than zero, the animal is in the "lower" half of the list.
+                                else if(commandWords[2].CompareTo(animals.Animals[middle].Name) < 0)
+                                {
+                                    // Set the maxPosition to the middle minus one.
+                                    maxPosition = middle - 1;
+                                }
+                                // The animal is in the middle position.
+                                else
+                                {
+                                    // Message saying the animal was found and the amount of loops completed.
+                                    Console.WriteLine("The animal was found!" + counter + " loops completed.");
+                                }
+                            }
+                        }
+                        else if (commandWords[1] == "linear")
+                        {
+                            // Set a counter variable.
+                            int counter = 0;
+
+                            // Get the passed in animals name.
+                            string animalName = commandWords[2];
+
+                            // For each animal in the zoo's list of animals.
+                            foreach (Animal a in zoo.Animals)
+                            {
+                                // Incrememnt the counter.
+                                counter++;
+
+                                // Does the entered name match the current animals name?
+                                if (a.Name == animalName)
+                                {
+                                    // Display the animal's name and the counter variable.
+                                    Console.WriteLine(animalName + "found." + counter + " loops completed.");
+                                }
+                            }
                         }
 
                         break;
