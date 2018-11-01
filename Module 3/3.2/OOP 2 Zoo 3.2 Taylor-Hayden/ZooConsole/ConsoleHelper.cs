@@ -532,19 +532,20 @@ namespace ZooConsole
             Dictionary<string, string> arguments = null;
 
             switch (command)
-            {   
-                // If the command is show.
-                case ("show"):
-
-                    // Instantiate arguements to a new dictionary.
-                    arguments = new Dictionary<string, string> ();
-
-                    // Adds two key-values to the dictonary. 
-                    arguments.Add("objectType:", "The type of object to show (ANIMAL, GUEST, or CAGE)");
-                    arguments.Add("objectName:", "The name of the object to show (use an animal name for CAGE)");
+            {
+                // If the command is add.
+                case ("add"):
 
                     // Used to help write out to the console about what the command is doing.
-                    ConsoleUtil.WriteHelpDetail(command, "Shows the details of an object.", arguments);
+                    ConsoleUtil.WriteHelpDetail(command, "The command used for adding objects into the zoo.", "objectType:", "The type of object to add (ANIMAL or GUEST)");
+
+                    break;
+                
+                // If the command is exit.
+                case ("exit"):
+
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "The command used to exit the application.");
 
                     break;
 
@@ -563,8 +564,51 @@ namespace ZooConsole
 
                     break;
 
+                // If the command is restart.
+                case ("restart"):
 
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "Creates a new zoo and corresponding objects.");
+
+                    break;
+
+                // If the command is show.
+                case ("show"):
+
+                    // Instantiate arguements to a new dictionary.
+                    arguments = new Dictionary<string, string> ();
+
+                    // Adds two key-values to the dictonary. 
+                    arguments.Add("objectType:", "The type of object to show (ANIMAL, GUEST, or CAGE)");
+                    arguments.Add("objectName:", "The name of the object to show (use an animal name for CAGE)");
+
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "Shows the details of an object.", arguments);
+
+                    break;
+
+                // If the command is temp.
+                case ("temp"):
+
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "The command used to change the temperature in the zoo.", "objectType", "The temperature in the zoo.");
+
+                    break;
             }
+        }
+
+        /// <summary>
+        /// Shows the help details from the console.
+        /// </summary>
+        public static void ShowHelp()
+        {
+            // Displays descirptive information about the following commands to the console.
+            Console.WriteLine("OOP 2 Zoo Help Index: ");
+
+            // Shows all of the commands for the console.
+            ConsoleUtil.WriteHelpDetail("HELP", "Show help detail.", "[command]", 
+                "The (optional) command for which to show help details. \nKnown Commands: \nRESTART: Creates a new Zoo. \nEXIT: Exits the application. \nTEMP: Sets the temperature of the zoo's birthing room." +
+                "\nSHOW: Shows the properties of the animal, guest, or cage. \nADD: Adds an animal or guest to the zoo. \nREMOVE: Removes a guest or animal from the zoo.");
         }
     }
 }

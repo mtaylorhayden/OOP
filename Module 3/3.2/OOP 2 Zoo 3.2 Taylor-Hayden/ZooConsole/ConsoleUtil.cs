@@ -266,25 +266,59 @@ namespace ZooConsole
             Console.WriteLine("Command name: " + command);
             Console.WriteLine("Overview: " + overview);
 
-            // Put the keys in a list.
-            List<string> list = new List<string>(arguements.Keys);
-
-            // Give flatten the arguments passed in from the console to display for the user.
-            string result = ListUtil.Flatten(list, " ");
-
-            // Display the flatten results.
-            Console.WriteLine("Usage: " + command + " " + result);
-
-            // Write out the word parameters.
-            Console.WriteLine("Parameters:");
-
-            // For each Key - value PAIR in arguements.
-            foreach (KeyValuePair<string, string> kvp in arguements)
+            // Make sure their is a dictionary.
+            if(arguements != null)
             {
-                // Trying to match display.
-                Console.WriteLine(kvp.Key + " " + kvp.Value);
+                // Put the keys in a list.
+                List<string> list = new List<string>(arguements.Keys);
 
+                // Give flatten the arguments passed in from the console to display for the user.
+                string result = ListUtil.Flatten(list, " ");
+
+                // Display the flatten results.
+                Console.WriteLine("Usage: " + command + " " + result);
+
+                // Write out the word parameters.
+                Console.WriteLine("Parameters:");
+
+                // For each Key - value PAIR in arguements.
+                foreach (KeyValuePair<string, string> kvp in arguements)
+                {
+                    // Trying to match display.
+                    Console.WriteLine(kvp.Key + " " + kvp.Value);
+
+                }
             }
+        }
+
+        /// <summary>
+        /// Overloaded method, the second option for the WriteHelpDetail method.
+        /// </summary>
+        /// <param name="command"> The command being executed.</param>
+        /// <param name="overview"> A brief description of what the command accomplishes.</param>
+        /// <param name="arguements"> The dictionary being used to show help commands.</param>
+        /// <param name="argumentUsage"> Details about using the arguement.</param>
+        public static void WriteHelpDetail(string command, string overview, string argument, string argumentUsage)
+        {
+            // Make a new dictionary.
+            Dictionary<string, string> keyValues = new Dictionary<string, string>();
+
+            // Add a key and value to the dictionary.
+            keyValues.Add(argument, argumentUsage);
+
+            // Call the original WriteHelpDetail to process the commands. 
+            ConsoleUtil.WriteHelpDetail(command, overview, keyValues);
+        }
+
+        /// <summary>
+        /// Overloaded method, the third option for the WriteHelpDetail method.
+        /// </summary>
+        /// <param name="command"> The command being executed.</param>
+        /// <param name="overview"> A brief description of what the command accomplishes.</param>
+        public static void WriteHelpDetail(string command, string overview)
+        {
+            // Call the orginial WriteHelpMethod and tell that the command has no arguments. 
+            ConsoleUtil.WriteHelpDetail(command, overview, null);
         }
     }
 }

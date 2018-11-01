@@ -69,11 +69,17 @@ namespace ZooConsole
                     // If you write "help" then you will see the following...
                     case "help":
                         
-                        // If the length of commandWords is longer than 2...
+                        // If the length of commandWords is 2 or longer.
                         if (commandWords.Length >= 2)
                         {
                             // Show the help detail and give the 2nd word to the helper (show or add).
                             ConsoleHelper.ShowHelpDetail(commandWords[1]);
+                        }
+                        // If the length of the array is one 
+                        else if (commandWords.Length == 1)
+                        {
+                            // Shows all of the console commands to the console.
+                            ConsoleHelper.ShowHelp();
                         }
                         else
                         {
