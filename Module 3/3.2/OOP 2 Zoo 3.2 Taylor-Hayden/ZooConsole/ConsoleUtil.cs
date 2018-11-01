@@ -1,4 +1,5 @@
 ﻿using Animals;
+using ClassLibrary1;
 using People;
 using System;
 using System.Collections.Generic;
@@ -251,6 +252,39 @@ namespace ZooConsole
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Writes out the help details from the console.
+        /// </summary>
+        /// <param name="command"> The command being executed.</param>
+        /// <param name="overview"> A brief description of what the command accomplishes.</param>
+        /// <param name="arguements"> The dictionary being used to show help commands.</param>
+        public static void WriteHelpDetail(string command, string overview, Dictionary<string, string> arguements)
+        {
+            // Display the command and overview.
+            Console.WriteLine("Command name: " + command);
+            Console.WriteLine("Overview: " + overview);
+
+            // Put the keys in a list.
+            List<string> list = new List<string>(arguements.Keys);
+
+            // Give flatten the arguments passed in from the console to display for the user.
+            string result = ListUtil.Flatten(list, " ");
+
+            // Display the flatten results.
+            Console.WriteLine("Usage: " + command + " " + result);
+
+            // Write out the word parameters.
+            Console.WriteLine("Parameters:");
+
+            // For each Key - value PAIR in arguements.
+            foreach (KeyValuePair<string, string> kvp in arguements)
+            {
+                // Trying to match display.
+                Console.WriteLine(kvp.Key + " " + kvp.Value);
+
+            }
         }
     }
 }

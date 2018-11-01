@@ -68,16 +68,30 @@ namespace ZooConsole
 
                     // If you write "help" then you will see the following...
                     case "help":
-                        Console.WriteLine("Known commands:");
-                        Console.WriteLine("HELP: Shows a list of known commands.");
-                        Console.WriteLine("EXIT: Exits the application.");
-                        Console.WriteLine("RESTART: Creates a new Zoo.");
-                        Console.WriteLine("TEMP: Sets the birthing room temperature.");
-                        Console.WriteLine("SHOW ANIMAL [animal name]: Displays information for specified animal.");
-                        Console.WriteLine("GUEST [guest name]: Displays information for specified guest.");
-                        Console.WriteLine("ADD ANIMAL [add animal]: Displays information about the animal you added.");
-                        Console.WriteLine("ADD GUEST [add guest]: Displays information about the guest you've added.");
-                        Console.WriteLine("REMOVE: Removes an animal from the zoo.");
+                        
+                        // If the length of commandWords is longer than 2...
+                        if (commandWords.Length >= 2)
+                        {
+                            // Show the help detail and give the 2nd word to the helper (show or add).
+                            ConsoleHelper.ShowHelpDetail(commandWords[1]);
+                        }
+                        else
+                        {
+                            // Display error message.
+                            Console.WriteLine("To many parameters entered.");
+                        }
+                        
+
+                        //Console.WriteLine("Known commands:");
+                        //Console.WriteLine("HELP: Shows a list of known commands.");
+                        //Console.WriteLine("EXIT: Exits the application.");
+                        //Console.WriteLine("RESTART: Creates a new Zoo.");
+                        //Console.WriteLine("TEMP: Sets the birthing room temperature.");
+                        //Console.WriteLine("SHOW ANIMAL [animal name]: Displays information for specified animal.");
+                        //Console.WriteLine("GUEST [guest name]: Displays information for specified guest.");
+                        //Console.WriteLine("ADD ANIMAL [add animal]: Displays information about the animal you added.");
+                        //Console.WriteLine("ADD GUEST [add guest]: Displays information about the guest you've added.");
+                        //Console.WriteLine("REMOVE: Removes an animal from the zoo.");
 
                         break;
 

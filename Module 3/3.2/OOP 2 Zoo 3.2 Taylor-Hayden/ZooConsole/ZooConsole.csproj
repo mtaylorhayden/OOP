@@ -67,6 +67,10 @@
       <Project>{b0f2943e-dcb1-4b1a-99dc-86b5e9ae6d1b}</Project>
       <Name>BoothItems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\Utilities.csproj">
+      <Project>{A01A900E-F340-4139-A209-3DE9AE33AF24}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoneyCollectors\MoneyCollectors.csproj">
       <Project>{88B444CE-86FF-46F9-B901-72ECF4218BB1}</Project>
       <Name>MoneyCollectors</Name>

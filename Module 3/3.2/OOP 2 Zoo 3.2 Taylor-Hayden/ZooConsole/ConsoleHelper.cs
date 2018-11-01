@@ -2,6 +2,7 @@
 using Animals;
 using People;
 using System;
+using System.Collections.Generic;
 using Zoos;
 
 namespace ZooConsole
@@ -518,6 +519,51 @@ namespace ZooConsole
             catch (IndexOutOfRangeException)
             {
                 Console.WriteLine("Must be the name of a guest in the list of guests..");
+            }
+        }
+
+        /// <summary>
+        /// Shows the help details from the console.
+        /// </summary>
+        /// <param name="command"></param>
+        public static void ShowHelpDetail(string command)
+        {
+            // Create a dictonary variable where the key and value are both strings. 
+            Dictionary<string, string> arguments = null;
+
+            switch (command)
+            {   
+                // If the command is show.
+                case ("show"):
+
+                    // Instantiate arguements to a new dictionary.
+                    arguments = new Dictionary<string, string> ();
+
+                    // Adds two key-values to the dictonary. 
+                    arguments.Add("objectType:", "The type of object to show (ANIMAL, GUEST, or CAGE)");
+                    arguments.Add("objectName:", "The name of the object to show (use an animal name for CAGE)");
+
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "Shows the details of an object.", arguments);
+
+                    break;
+
+                // If the command is remove.
+                case ("remove"):
+
+                    // Instantiate arguements to a new dictionary.
+                    arguments = new Dictionary<string, string>();
+
+                    // Adds two key-values to the dictonary. 
+                    arguments.Add("objectType:", "The type of object to remove (ANIMAL or GUEST)");
+                    arguments.Add("objectName:", "The name of the object to remove");
+
+                    // Used to help write out to the console about what the command is doing.
+                    ConsoleUtil.WriteHelpDetail(command, "The command used to remove objects from the zoo.", arguments);
+
+                    break;
+
+
             }
         }
     }
