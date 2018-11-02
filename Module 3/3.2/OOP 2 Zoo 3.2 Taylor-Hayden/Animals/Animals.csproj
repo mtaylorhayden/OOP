@@ -45,12 +45,15 @@
     <Compile Include="AnimalFactory.cs" />
     <Compile Include="AnimalType.cs" />
     <Compile Include="Abstract Animals\Bird.cs" />
+    <Compile Include="MovingBehavior\ClimbBehavior.cs" />
     <Compile Include="EatingBehavior\BuryAndEatBone.cs" />
     <Compile Include="Animals\Chimpanzee.cs" />
     <Compile Include="EatingBehavior\ConsumeBehavior.cs" />
     <Compile Include="Animals\Dingo.cs" />
     <Compile Include="Animals\Eagle.cs" />
     <Compile Include="Abstract Animals\Fish.cs" />
+    <Compile Include="MovingBehavior\ClimbProcess.cs" />
+    <Compile Include="MovingBehavior\HoverBehavior.cs" />
     <Compile Include="MovingBehavior\FlyBehavior.cs" />
     <Compile Include="BirthingBehavior\GiveBirthBehavior.cs" />
     <Compile Include="Animals\Hummingbird.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Animals\Kangaroo.cs" />
     <Compile Include="BirthingBehavior\LayEggBehavior.cs" />
     <Compile Include="Abstract Animals\Mammal.cs" />
+    <Compile Include="MovingBehavior\HoverProcess.cs" />
     <Compile Include="MovingBehavior\MoveBehaviorFactory.cs" />
     <Compile Include="MovingBehavior\MoveBehaviorType.cs" />
     <Compile Include="MovingBehavior\MoveHelper.cs" />

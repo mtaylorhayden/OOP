@@ -38,6 +38,10 @@ namespace Animals
                 case MoveBehaviorType.NoMove:
                     moveBehavior = new NoMoveBehavior();
                     break;
+
+                case MoveBehaviorType.Climb:
+                    moveBehavior = new ClimbBehavior();
+                    break;
             }
             return moveBehavior;
         }

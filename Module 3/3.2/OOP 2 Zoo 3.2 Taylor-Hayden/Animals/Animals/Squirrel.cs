@@ -17,7 +17,10 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             // This animal doesn't move.
-            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.NoMove);
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.Climb);
+
+            // Start at the bottom of the cage.
+            this.YPosition = 400;
 
             // The baby will weight 17% of the mother.
             this.BabyWeightPercentage = .17 * this.Weight;
