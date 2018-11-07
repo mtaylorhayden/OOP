@@ -305,18 +305,178 @@ namespace Zoos
             return new SortResult() { SwapCount = swapCounter, Animals = animals, CompareCount = compareCounter, ElapsedMilliseconds = stopWatch.Elapsed.TotalMilliseconds };
         }
 
-        ///// <summary>
-        ///// The method that will do a quick sort.
-        ///// </summary>
-        ///// <param name="animals"> The animals being sorted.</param>
-        ///// <param name="leftIndex"> The value for the left.</param>
-        ///// <param name="rightIndex"> The value for the right.</param>
-        ///// <param name="sort"> The sort being returned.</param>
-        ///// <returns></returns>
-        //public static SortResult QuickSortByWeight(List<Animal> animals, int leftIndex, int rightIndex, SortResult sort)
-        //{
+        /// <summary>
+        /// The method that will do a quick sort.
+        /// </summary>
+        /// <param name="animals"> The animals being sorted.</param>
+        /// <param name="leftIndex"> The value for the left.</param>
+        /// <param name="rightIndex"> The value for the right.</param>
+        /// <param name="sort"> The sort being returned.</param>
+        /// <returns> The sort result by weight.</returns>
+        public static SortResult QuickSortByName(List<Animal> animals, int leftIndex, int rightIndex, SortResult sortResult)
+        {
 
-        //}
+            // define variables to keep track of the left and right points in the list
+            // initialize them to the passed-in indexes
+            int leftPointer = leftIndex;
+            int rightPointer = rightIndex;
+
+            // find the animal to pivot on (the middle animal in this case)
+            Animal pivotAnimal = animals[(leftIndex + rightIndex) / 2];
+
+            // define and initialize a loop variable
+            bool done = false;
+
+            // start looping
+            while (!done)
+            {
+                // while the name of the animal at the left pointer spot in the list is less than the pivot animal's name.
+                while (string.Compare(pivotAnimal.Name, animals[leftPointer].Name) == 1)
+                {
+                    // increment the left pointer
+                    leftPointer++;
+
+                    // increment the sort result's compare count
+                    sortResult.CompareCount++;
+                }
+
+                // while the pivot animal's weight is less than the weight of the animal at the right pointer spot in the list
+                while (string.Compare(pivotAnimal.Name, animals[rightPointer].Name) == -1)
+                {
+                    // decrement the right pointer
+                    rightPointer--;
+
+                    // increment the sort result's compare count
+                    sortResult.CompareCount++;
+                }
+
+                // if the left pointer is less than or equal to the right pointer
+                if (leftPointer <= rightPointer)
+                {
+                    // swap the animals at the left pointer and right pointer spots
+                    Swap(animals, leftPointer, rightPointer);
+
+                    // increment the sort result's swap count
+                    sortResult.SwapCount++;
+
+                    // then increment the left pointer and decrement the right pointer
+                    leftPointer++;
+                    rightPointer--;
+                }
+
+                // if the left pointer is greater than the right pointer,
+                // stop the outer while loop
+                if (leftPointer > rightPointer)
+                {
+                    done = true;
+                }
+            }
+
+            // if the left index is less than the right pointer
+            // use recursion to sort the animals within the left index and right pointer
+            if (leftIndex < rightPointer)
+            {
+                SortHelper.QuickSortByName(animals, leftIndex, rightPointer, sortResult);
+            }
+
+            // if the left pointer is less than the right index
+            // use recursion to sort the animals within the left pointer and right index
+            if (leftPointer < rightIndex)
+            {
+                SortHelper.QuickSortByName(animals, leftPointer, rightIndex, sortResult);
+            }
+
+            // Set the passed in animals parameter to the sort result's parameter.
+            sortResult.Animals = animals;
+
+            return sortResult;
+        }
+
+        /// <summary>
+        /// The method that will do a quick sort.
+        /// </summary>
+        /// <param name="animals"> The animals being sorted.</param>
+        /// <param name="leftIndex"> The value for the left.</param>
+        /// <param name="rightIndex"> The value for the right.</param>
+        /// <param name="sort"> The sort being returned.</param>
+        /// <returns> The sort result by weight.</returns>
+        public static SortResult QuickSortByWeight(List<Animal> animals, int leftIndex, int rightIndex, SortResult sort)
+        {
+            // Variables to keep track of left and right points in list.
+            int leftPointer = leftIndex;
+            int rightPointer = rightIndex;
+
+            // Find the animal to pivot on (In this case, the midde.)
+            Animal pivotAnimal = animals[(leftIndex + rightIndex) / 2];
+
+            // define and initialize a loop variable
+            bool done = false;
+
+            // start looping
+            while (!done)
+            {
+                // While the weight of the animal at the left pointer spot in the list is less than the pivot animal's weight
+                while (animals[leftPointer].Weight < pivotAnimal.Weight)
+                {
+                    // increment the left pointer
+                    leftPointer++;
+
+                    // increment the sort result's compare count
+                    sort.CompareCount++;
+                }
+
+                // While the pivot animal's weight is less than the weight of the animal at the right pointer spot in the list
+                while (pivotAnimal.Weight < animals[rightPointer].Weight)
+                {
+                    // decrement the right pointer
+                    rightPointer--;
+
+                    // increment the sort result's compare count
+                    sort.CompareCount++;
+                }
+
+                // if the left pointer is less than or equal to the right pointer
+                if (leftPointer <= rightPointer)
+                {
+                    // swap the animals at the left pointer and right pointer spots
+                    Swap(animals, leftPointer, rightPointer);
+
+                    // increment the sort result's swap count
+                    sort.SwapCount++;
+
+                    // then increment the left pointer and decrement the right pointer
+                    leftPointer++;
+                    rightPointer--;
+                }
+
+                // if the left pointer is greater than the right pointer,
+                // stop the outer while loop
+                if (leftPointer > rightPointer)
+                {
+                    done = true;
+                }
+            }
+
+            // if the left index is less than the right pointer
+            // use recursion to sort the animals within the left index and right pointer
+            if (leftIndex < rightPointer)
+            {
+                QuickSortByWeight(animals, leftIndex, rightPointer, sort);
+            }
+
+            // if the left pointer is less than the right index
+            // use recursion to sort the animals within the left pointer and right index
+            if (leftPointer < rightIndex)
+            {
+                QuickSortByWeight(animals , leftPointer, rightIndex, sort);
+            }
+
+            // Set the sorts Animal's property to the sorted list of animals.
+            sort.Animals = animals;
+
+            // Return the sort?
+            return sort;
+        }
 
         /// <summary>
         /// Swaps the animals in the list.

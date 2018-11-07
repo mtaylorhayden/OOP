@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Accounts;
 using Animals;
 using BoothItems;
@@ -598,6 +600,48 @@ namespace Zoos
                     {
                         // Sort by the animals weight and insertion.
                         result = SortHelper.InsertionSortByName(this.animals);
+                    }
+                    break;
+                // If you want to sort by quick...
+                case "quick":
+
+                    // Make a new sort result.
+                    SortResult sort = new SortResult();
+
+                    // Make a new stop watch and start the timer.
+                    Stopwatch watch = new Stopwatch();
+                    watch.Start();
+
+                    // If you want to sort by weight.
+                    if (sortValue == "name")
+                    {
+                        // Pass in the lowest left index (0), and the highest right index (the number of items in the list)
+                        SortHelper.QuickSortByName(this.animals, 0, this.animals.Count - 1, sort);
+
+                        // Stop the watch.
+                        watch.Stop();
+
+                        // Set the sorts elapsed milliseconds to the watch's total elapsed milliseconds property. 
+                        sort.ElapsedMilliseconds = watch.Elapsed.TotalMilliseconds;
+
+                        // Set the result variable to the sort resutl
+                        result = sort;
+                    }
+
+                    // If you want to sort by weight.
+                    if (sortValue == "weight")
+                    {
+                        // Pass in the lowest left index (0), and the highest right index (the number of items in the list)
+                        SortHelper.QuickSortByWeight(this.animals, 0, this.animals.Count - 1, sort);
+
+                        // Stop the watch.
+                        watch.Stop();
+
+                        // Set the sorts elapsed milliseconds to the watch's total elapsed milliseconds property. 
+                        sort.ElapsedMilliseconds = watch.Elapsed.TotalMilliseconds;
+
+                        // Set the result variable to the sort resutl
+                        result = sort;
                     }
                     break;
             }
