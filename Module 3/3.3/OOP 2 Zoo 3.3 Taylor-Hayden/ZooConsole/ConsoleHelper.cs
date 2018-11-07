@@ -321,13 +321,18 @@ namespace ZooConsole
 
                     break;
 
-                case "guest":
-                    ShowGuest(zoo, upperName);
+                case "cage":
+                    ShowCage(zoo, upperName);
 
                     break;
 
-                case "cage":
-                    ShowCage(zoo, upperName);
+                case "childern":
+                    ShowChildern(zoo, upperName);
+
+                    break;
+
+                case "guest":
+                    ShowGuest(zoo, upperName);
 
                     break;
 
@@ -488,6 +493,20 @@ namespace ZooConsole
         }
 
         /// <summary>
+        /// Shows the childern of an animal.
+        /// </summary>
+        /// <param name="zoo"> The where we will find the animals.</param>
+        /// <param name="name"> The name of the animal in the zoo.</param>
+        private static void ShowChildern (Zoo zoo, string name)
+        {
+            // Finds the animal from the zoo based on name.
+            Animal foundAnimal = zoo.FindAnimal(name);
+
+            // Give the walktree method the animal and an empty string.
+            WalkTree(" ", foundAnimal);
+        }
+
+        /// <summary>
         /// Shows the guest in the zoo.
         /// </summary>
         /// <param name="zoo"> The zoo that guest is in.</param>
@@ -609,6 +628,33 @@ namespace ZooConsole
             ConsoleUtil.WriteHelpDetail("HELP", "Show help detail.", "[command]", 
                 "The (optional) command for which to show help details. \nKnown Commands: \nRESTART: Creates a new Zoo. \nEXIT: Exits the application. \nTEMP: Sets the temperature of the zoo's birthing room." +
                 "\nSHOW: Shows the properties of the animal, guest, or cage. \nADD: Adds an animal or guest to the zoo. \nREMOVE: Removes a guest or animal from the zoo.");
+        }
+
+        /// <summary>
+        /// The family tree.
+        /// </summary>
+        /// <param name="animal"> The animal being displayed.</param>
+        /// <param name="prefix"> A blank space to help display.</param>
+        private static void WalkTree(string prefix, Animal animal)
+        {
+            if (animal != null)
+            {
+                // Display the animal with a space.
+                Console.WriteLine(prefix + animal);
+
+                    // Does the animal have childern?
+                    if(animal.Childern != null)
+                {
+                    foreach (Animal a in animal.Childern)
+                    {
+                        if (a != null)
+                        {
+                            // Add the animal's child to the Walk Tree.
+                            WalkTree(prefix + " ", a);
+                        }
+                    }
+                }
+            }
         }
     }
 }

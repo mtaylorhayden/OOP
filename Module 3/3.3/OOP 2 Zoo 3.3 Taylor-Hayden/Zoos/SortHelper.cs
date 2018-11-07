@@ -305,6 +305,19 @@ namespace Zoos
             return new SortResult() { SwapCount = swapCounter, Animals = animals, CompareCount = compareCounter, ElapsedMilliseconds = stopWatch.Elapsed.TotalMilliseconds };
         }
 
+        ///// <summary>
+        ///// The method that will do a quick sort.
+        ///// </summary>
+        ///// <param name="animals"> The animals being sorted.</param>
+        ///// <param name="leftIndex"> The value for the left.</param>
+        ///// <param name="rightIndex"> The value for the right.</param>
+        ///// <param name="sort"> The sort being returned.</param>
+        ///// <returns></returns>
+        //public static SortResult QuickSortByWeight(List<Animal> animals, int leftIndex, int rightIndex, SortResult sort)
+        //{
+
+        //}
+
         /// <summary>
         /// Swaps the animals in the list.
         /// </summary>
